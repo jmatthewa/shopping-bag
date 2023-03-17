@@ -16,7 +16,7 @@
               <span class="amount">US$ {{ (product.price * product.quantity).toFixed(2) }}</span>
             </div>
           </div>
-          <div class="grand-total"> Grand Total: US$ 22.30</div>
+          <div class="grand-total"> Grand Total: US$ {{ grandTotal() }}</div>
       </template>
       
       <template v-else>
@@ -34,7 +34,13 @@ export default {
   name: 'BasketView',
 
   methods: {
-   
+   grandTotal(){
+    var total = 0;
+    this.productsInBag.forEach(item => {
+      total += item.price * item.quantity;
+    });
+    return total.toFixed(2);
+   }
   },
   computed: 
     mapState([

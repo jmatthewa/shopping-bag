@@ -23,6 +23,7 @@
 </template>
 
 <script>
+import{ mapState } from 'vuex';
 
 export default {
   name: 'HomeView',
@@ -41,14 +42,11 @@ export default {
     return this.productsInBag.find(item => item.id == product.id)
    }
   },
-  computed: {
-    products() {
-      return this.$store.state.products;
-    },
-    productsInBag() {
-      return this.$store.state.productsInBag;
-    }
-  }
+  computed: 
+    mapState([
+      'products', 
+      'productsInBag'
+    ])
 }
 </script>
 
